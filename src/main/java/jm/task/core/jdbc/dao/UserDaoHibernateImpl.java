@@ -11,11 +11,7 @@ import jm.task.core.jdbc.util.Util;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    private final SessionFactory sessionFactory;
-
-    public UserDaoHibernateImpl() {
-        sessionFactory = Util.getSessionFactory();
-    }
+    private final SessionFactory sessionFactory = Util.getSessionFactory();
 
     @Override
     public void createUsersTable() {
@@ -43,8 +39,6 @@ public class UserDaoHibernateImpl implements UserDao {
         }
     }
 
-
-
     @Override
     public void removeUserById(long id) {
         try (Session session = sessionFactory.openSession()) {
@@ -57,6 +51,7 @@ public class UserDaoHibernateImpl implements UserDao {
             e.printStackTrace();
         }
     }
+
     @Override
     public void saveUser(String name, String lastName, byte age) {
         try (Session session = sessionFactory.openSession()) {
